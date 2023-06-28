@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UserEdit</title>
+    <link rel="stylesheet" href="/css/userEdit.css">
+</head>
+<body>
+    <div class="container">
+        <div class="title">
+            <h1>Edit user</h1>
+        </div>
+        <div class="form">
+            <form action="/user/edit/<%= user._id %>?_method=PUT" method="post">
+                <input type="hidden" name="method" value="PUT">
+                <input type="text" name="name" class="formInput" value="<%= user.name %>">
+                <input type="email" name="email" class="formInput" value="<%= user.email %>">
+                <button type="submit" class="bntSubmit">Guardar</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
