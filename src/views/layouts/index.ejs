@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <% for( let i = 0; i < template.css.length; i++ ) { %>
+        <link rel="stylesheet" href="/css/<%-template.css[i]%>.css">
+    <% } %>
+    <title><%=template.title%></title>
+</head>
+<body>
+    <%- include (`../${template.path}`) %>
+</body>
+</html>
