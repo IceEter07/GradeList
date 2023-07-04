@@ -11,7 +11,7 @@ const usersController = require('../controller/users.controller')
 
 
 router.get('/index', usersController.index)
-router.get('/user/edit/:id', usersController.renderEditForm)
+router.get('/user/editForm/:id', usersController.renderEditForm)
 router.put('/user/edit/:id', usersController.updateUser)
 
 

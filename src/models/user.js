@@ -5,6 +5,14 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
+    ap1:{
+        type: String,
+        required: true,
+    },
+    ap2:{
+        type: String,
+        required: true,
+    },
     email:{
         type: String,
         required: true,
