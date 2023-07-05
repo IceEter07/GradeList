@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UserEdit</title>
-    <link rel="stylesheet" href="/css/userEdit.css">
-</head>
 
-<body>
     <div class="container">
         <%- include('../partials/messages')  %>
         <div class="cardBox">
@@ -20,11 +11,7 @@
                 <input type="text" name="name" class="formInput" value="<%= user.name %>">
                 <input type="text" name="ap1" class="formInput" value="<%= user.ap1 %>">
                 <input type="text" name="ap2" class="formInput" value="<%= user.ap2 %>">
-                <input type="email" name="email" class="formInput" value="<%= user.email %>">
                 <button type="submit" class="btnSubmit">Guardar</button>
             </form>
             </div>
         </div>
-</body>
-
-</html>

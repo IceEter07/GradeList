@@ -1,11 +1,17 @@
-<% if (error_msg != null) { %>
+<% console.log(success_msg.length); %>
+
+<% if (error_msg.length == 1) { %>
     <div class="alertError" style="display: block;"">
         <span><%= error_msg %></span>
     </div>
 <% } %>
 
-<% if (success_msg != null) { %>
+<% if (success_msg.length == 1) { %>
     <div class="alertSuccess" style="display: block;">
+        <span><%= success_msg %></span>
+    </div>
+<% } else { %>
+    <div style="display: hidden;">
         <span><%= success_msg %></span>
     </div>
 <% } %>
