@@ -1,15 +1,17 @@
 
     <div class="container">
-        <div class="title">
-            <h1>Log in</h1>
-        </div>
-        <div class="form">
-            <form action="#" method="post">
+        <%- include('../partials/messages')  %>
+        <div class="cardBox">
+            <img src="/img/user3.png" alt="user image" id="editUserImg">
+            <div class="title">
+                <h2>Modificar perfil</h2>
+            </div>
+            <form action="/user/edit/<%= user._id %>?_method=PUT" method="post" class="form">
                 <input type="hidden" name="method" value="PUT">
-                <input type="text" name="name" class="formInput" value="">
-                <input type="email" name="email" class="formInput" value="">
-                <button type="submit" class="bntSubmit">Guardar</button>
+                <input type="text" name="name" class="formInput" value="<%= user.name %>">
+                <input type="text" name="ap1" class="formInput" value="<%= user.ap1 %>">
+                <input type="text" name="ap2" class="formInput" value="<%= user.ap2 %>">
+                <button type="submit" class="btnSubmit">Guardar</button>
             </form>
+            </div>
         </div>
-    </div>
-

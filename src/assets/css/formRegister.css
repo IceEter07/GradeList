@@ -1,0 +1,93 @@
+* {
+    margin: 0px auto;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background-color: #FCF9EA;
+}
+
+.container{
+    display: grid;
+    grid-template-columns: calc(100%/8) calc(100%/8) calc(100%/8) calc(100%/8) calc(100%/8) calc(100%/8) calc(100%/8) calc(100%/8);
+    /* justify-items: center; */
+}
+
+.formRegister{
+    margin-top: 5%;
+    width: 100%;
+    padding: 1%;
+    grid-column: 3/7 ;
+    Border-radius: 5px;
+    border: 0.5px solid rgba(85, 85, 85, 0.26);
+    box-shadow: 7.5px 7.5px 15px -2px #dddddd;
+    text-align: center;
+}
+
+.formRegister form{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+h2{
+    margin-top: 2%;
+}
+
+
+
+input:not([type="submit"]) {
+    grid-column: 2/4;
+    width: 100%;
+    margin-bottom: 2%;
+    padding: 1%;
+    border-radius: 5px;
+    font-size: 14px;
+    border: 0.5px solid rgba(85, 85, 85, 0.26);
+    color: #0E498F;
+}
+
+form label{
+    grid-column: 2/4;
+
+}
+
+input[type="submit"]{
+    color: black;
+    border: 1px solid #0E498F;
+    background-color: #0E498F;
+    color: white;
+    Transition: 0.6s;
+    Border-radius: 5px;
+    padding: 1% 5% 1% 5%;
+    margin-top: 1%;
+    grid-column: 2/4;
+    width: 50%;
+}
+
+input[type="submit"]:hover{
+    color: white;
+    background-color: #1c7ff8;
+    Transition: 0.6s;
+    Border-radius: 5px;
+    justify-content: center;
+} 
+
+.error{
+    background-color: rgba(215, 116, 116, 0.586);
+    padding: 0.5%;
+    margin: 1%;
+    display: grid;
+    grid-template-columns: 90% 10%;
+    align-items: center;
+}
+
+.error button{
+    margin-left: 70%;
+    border: none;
+    align-items: center;
+    padding: 5%;
+    font-size: x-large;
+    cursor: pointer;
+    background-color: rgba(1,2,3,0);
+}
