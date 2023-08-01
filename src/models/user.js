@@ -27,7 +27,12 @@ const UserSchema = new Schema({
     timestamps: true
 });
 
+UserSchema.methods.matchPassword = async function(password) {
+    return await bcrypt.compare(password, this.password)
+}
+
 UserSchema.methods.encryptPassword = async password => {
+    console.log(password);    
     const salt = await bcrypt.genSalt(10);
     return await bcrypt.hash(password, salt);
 }
