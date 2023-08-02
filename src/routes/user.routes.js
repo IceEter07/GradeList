@@ -1,7 +1,8 @@
 const { Router } = require('express')
 const router = Router();
 
-const usersController = require('../controller/users.controller')
+const usersController = require('../controller/users.controller');
+const userController = require('../controller/users.controller');
 
 // router.get('/user/signup', userController.renderSignUpForm)
 // router.post('/user/signup', userController.signUp)
@@ -15,6 +16,7 @@ router.get('/user/editForm/:id', usersController.renderEditForm)
 router.put('/user/edit/:id', usersController.updateUser)
 router.get('/registerForm', usersController.register);
 router.post('/register', usersController.registerUser);
+router.get('/', userController.aboutUs)
 
 
 // router.get('/user/logout', userController.logout)
