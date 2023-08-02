@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> <%= template.title %> </title>
+    <% for( let i = 0; i < template.css.length; i++ ) { %>
+        <link rel="stylesheet" href="/css/<%-template.css[i]%>.css">
+    <% } %>
+</head>
+<body>
+
+    <% for( let i = 0; i < template.path.length; i++ ) { %>
+        <%- include (`../${template.path[i]}`) %>
+    <% } %>
+    
+    <script>
+        const toggleBtn = document.querySelector('.toggle_btn');
+        const toggleBtnIcon = document.querySelector('.toggle_btn i img');
+        const dropDownMenu = document.querySelector('.dropdown_menu');
+
+        toggleBtnIcon.onclick = function(){
+            dropDownMenu.classList.toggle('open');
+            const isOpen = dropDownMenu.classList.contains('open');
+
+            if (toggleBtnIcon.classList = isOpen) {
+                toggleBtnIcon.src='/img/cancel.png'
+            }else{
+                toggleBtnIcon.src='/img/menu.png'
+            }
+        }
+
+    </script>
+
+</body>
+</html>

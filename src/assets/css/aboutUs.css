@@ -1,0 +1,178 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;  
+}
+
+body{
+    height: 100vh; 
+    background-color: #FCF9EA;
+}
+
+li{
+    list-style: none;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(11, 18, 89);
+}
+
+a:hover{
+    color: rgba(80, 90, 206, 0.648);
+}
+
+/* HEADER */
+
+header{
+    position: relative;
+    padding: 0 2rem;
+}
+
+.navbar{
+    border-radius: 5px;
+    background-color: rgba(227, 227, 227, 0.87);
+    width: 100%;
+    height: 60px;
+    max-width: 1300px;
+    margin: 0 auto;
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo{
+    margin-left: 1%;
+}
+
+.navbar .logo a{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.navbar .links{
+    display: flex; 
+    gap: 2rem;
+}
+
+.navbar .toggle_btn{
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none;
+}
+
+.navbar .toggle_btn i img{
+    width: 60%;
+}
+
+.action_btn{
+    margin-right: 1%;
+    background-color:#0E498F;
+    color: white;
+    padding: 0.5rem 1rem ;
+    border: none;
+    outline: none;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: scale .2 ease;
+}
+
+.action_btn:hover{
+    scale: 1.05;
+    color: #fff;
+    background-color: #1c7ff8;
+}
+
+.action_btn:active{
+    scale: 0.95;
+}
+
+/* DROPDOWN MENU */
+
+.dropdown_menu{
+    display: none;
+    position: absolute;
+    right: 2rem;
+    top: 78px;
+    height: 0;
+    width: 300px;
+    background-color: rgba(225, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dropdown_menu.open{
+    height: 210px;
+}
+
+.dropdown_menu li{
+    padding: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown_menu .action_btn{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* RESPONSIVE DESING */
+
+@media (max-width: 992px) {
+    .navbar .links,
+    .navbar .action_btn {
+        display: none;
+    }
+    
+    .navbar .toggle_btn{
+        display: block;
+    }
+    
+    .dropdown_menu{
+        display: block;
+    }
+}
+
+@media (max-width: 576px) {
+    .dropdown_menu{
+        left: 2rem;
+        width: unset;
+    }
+}
+
+/* .about{
+    margin-top: 2%;
+    backdrop-filter: blur(80px);
+    background-image: url(/img/textura.jpg);
+    display: grid;
+    height: 20rem;
+    justify-items: center;
+}
+
+.about h1{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+}
+
+.about button{
+    width: 9rem;
+    height: 2.5rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #0E498F;
+    color: white;
+}
+
+.about button:hover{    
+    transition: 0.5s all;
+    background-color: #1c7ff8;
+} */
