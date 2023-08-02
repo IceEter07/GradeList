@@ -97,6 +97,25 @@ input[type="submit"]:hover{
     box-sizing: border-box;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+.error{
+    background-color: rgba(215, 116, 116, 0.586);
+    padding: 0.5%;
+    margin: 1%;
+    display: grid;
+    grid-template-columns: 90% 10%;
+    align-items: center;
+    text-align: center;
+}
+
+.error button{
+    margin-left: 70%;
+    border: none;
+    align-items: center;
+    padding: 5%;
+    font-size: x-large;
+    cursor: pointer;
+    background-color: rgba(1,2,3,0);
+}
 .container{
     width: 100%;
     height: 100vh;
@@ -120,6 +139,8 @@ input[type="submit"]:hover{
 .register{
     padding: 40px;
     position: relative;
+    background: #fffef5;
+    border-radius: 5px;
 }
 
 .register h2{
@@ -137,6 +158,14 @@ input[type="submit"]:hover{
     border-right-style: none;
     border-bottom: 1px solid #a8a8a8;
     color:  #333;
+    background: #fffef5;
+}
+.register input:-webkit-autofill,
+.register input:-webkit-autofill:hover,
+.register input:-webkit-autofill:focus,
+.register input:-webkit-autofill:active {
+    -webkit-transition-delay: 9999s;
+    transition-delay: 9999s;
 }
 
 .register:active,
@@ -146,16 +175,21 @@ input[type="submit"]:hover{
 
 .register .submit{
     transition: .7s;
-    width: auto;
+    width: 100%;
+    margin: 15 px 0px;
     padding: 10px;
-    background: #f17100;
-    color: #fff;
-    font-size: 12px;
-    box-shadow: 0 0 3px 0 rgba(0, 0, 0, .2);
     cursor: pointer;
+    position: relative;
+    /* background: #FF7900; */
+    background-color: #ff916f;
+    color: white;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
 }
 .register .submit:hover{
-    background: #d46300;
+    background-color: #ef8a6b;
+    /* background: #d46300; */
     transition: .7s;
 }
 .register::after{
@@ -177,12 +211,12 @@ input[type="submit"]:hover{
 
 .login{
     border-radius: 5px;
-    background-image: linear-gradient(to bottom right, #1ab6b6, #4cac6e);
+    background-color: #0e498f;
     padding: 40px;
 }
 
 .login h2{
-    color: #fff;
+    color: #fffef5;
     margin-bottom: 45px;
 }
 
@@ -193,15 +227,18 @@ input[type="submit"]:hover{
     padding: 10px;
     cursor: pointer;
     position: relative;
-    background: #f17100;
+    background: #5579c5;
     color: white;
+    border: none;
+    font-weight: 600;
+    font-size: 16px;
 }
 .login button:hover{
-    background: #d46300;
+    background: #009fe0;
     transition: .7s;
 }
 
-.login input{
+.login-items input{
     width: 100%;
     padding: 5px;
     font-size: 16px;
@@ -209,6 +246,43 @@ input[type="submit"]:hover{
     border-top-style: none;
     border-left-style: none;
     border-right-style: none;
-    border-bottom: 1px solid #a8a8a8;
-    color:  #333;
+    border-bottom: 1px solid #fffef5;
+    background: transparent;
 }
+
+.login-items input:active,
+.login-items input:focus{
+    outline: none;
+    color: #fffef5;
+}
+
+.login-items input:-webkit-autofill,
+.login-items input:-webkit-autofill:hover,
+.login-items input:-webkit-autofill:focus,
+.login-items input:-webkit-autofill:active {
+    -webkit-transition-delay: 9999s;
+    transition-delay: 9999s;
+}
+
+.login-items input::placeholder{
+    color: #fffef5;
+}
+
+
+/*Media query*/
+/* .register::after {
+    content: 'v';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 100%;
+    right: 300px;
+    padding: 10px;
+    text-align: center;
+    font-size: 19px;
+    background: #f1f1f1;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    box-shadow: -1px 1px 3px 1px rgba(0, 0, 0, .2);
+    color: #7c7c7c;
+} */
