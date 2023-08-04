@@ -24,6 +24,24 @@ mainController.groupView = (req, res) => {
     });
 }
 
+mainController.groupRegisterForm = (req, res) => {
+    res.render('layouts/index',{
+        template: {
+            path: 'main/groupRegister',
+            title: 'Group Register',
+            css: ['main']
+        }
+    });
+}
+
+
+mainController.groupRegister = async (req, res) => {
+    const {name, description} = req.body;
+    const newGroup = new group({name, description})
+    await newGroup.save();
+
+    res.send("Registro de grupo exitoso")
+}
 
 
 module.exports = mainController;

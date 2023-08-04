@@ -1,4 +1,5 @@
-const {Schema, model} = require('mongoose')
+const {Schema, model} = require('mongoose'),
+    group = require('./group')
 
 const schoolSchema = new Schema({
     name:{
@@ -8,10 +9,10 @@ const schoolSchema = new Schema({
     description:{
         type: String,
     },
-    schools:{
-        type: Array,
-        required: true,
-    },
+    group:[{
+        type: Schema.ObjectId,
+        ref: "group"
+    }],
 }, {
     timestamps: true
 });

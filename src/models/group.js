@@ -8,9 +8,9 @@ const groupSchema = new Schema({
     description:{
         type: String,
     },
-    students:{
-        type: Array,
-        required: true,
+    student:{
+        type: Schema.ObjectId,
+        ref: "student"
     },
 }, {
     timestamps: true
