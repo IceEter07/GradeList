@@ -9,8 +9,6 @@ const usersController = require('../controller/users.controller')
 // router.get('/user/signin', userController.renderSignInForm)
 // router.post('/user/signin', userController.signIn)
 
-
-router.get('/index', usersController.index)
 router.get('/user/editForm/:id', usersController.renderEditForm)
 router.put('/user/edit/:id', usersController.updateUser)
 

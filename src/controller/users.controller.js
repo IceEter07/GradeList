@@ -1,17 +1,6 @@
 const userController = {}
 const User = require('../models/user')
 
-userController.index = (req, res) => {
-    res.render('layouts/index',{
-        template: {
-            path: 'users/editUser',
-            title: 'Passport',
-            css: ['main','userEdit']
-        }
-    });
-}
-
-
 userController.renderEditForm = async (req, res) =>{
     
     const user = await User.findById(req.params.id).lean()

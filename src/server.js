@@ -35,6 +35,7 @@ app.use((req, res, next) =>{
 
 //Routes
 app.use(require('./routes/user.routes'));
+app.use(require('./routes/main.routes'));
 
 //Static files
 app.use(express.static(path.join(__dirname, 'assets')));

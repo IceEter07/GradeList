@@ -16,4 +16,4 @@ const schoolSchema = new Schema({
     timestamps: true
 });
 
-module.exports = model('user', userSchema);
+module.exports = model('school', schoolSchema);
