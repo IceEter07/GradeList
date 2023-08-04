@@ -6,7 +6,6 @@ const flash = require('connect-flash')
 const session = require('express-session')
 const passport = require('passport')
 const mongoStore = require('connect-mongo');
-const MongoStore = require('connect-mongo')
 
 
 const app = express();
