@@ -40,8 +40,7 @@ mainController.groupRegister = async (req, res) => {
     const newGroup = new group({name, description})
     await newGroup.save();
 
-    res.send("Registro de grupo exitoso")
+    res.redirect('/dashboard');
 }
-
 
 module.exports = mainController;

@@ -8,10 +8,10 @@ const groupSchema = new Schema({
     description:{
         type: String,
     },
-    student:{
+    student:[{
         type: Schema.ObjectId,
         ref: "student"
-    },
+    }],
 }, {
     timestamps: true
 });
