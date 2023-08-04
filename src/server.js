@@ -5,6 +5,8 @@ const methodOverride = require('method-override')
 const flash = require('connect-flash')
 const session = require('express-session')
 const passport = require('passport')
+const mongoStore = require('connect-mongo');
+const MongoStore = require('connect-mongo')
 
 
 const app = express();
@@ -22,7 +24,10 @@ app.use(methodOverride('_method'))
 app.use(session({
     secret: 'secret',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store: mongoStore.create({
+        mongoUrl: `mongodb://127.0.0.1/gradelist` 
+    })
 }));
 app.use(passport.initialize());
 app.use(passport.session());
