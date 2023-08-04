@@ -19,7 +19,11 @@ const studentSchema = new Schema({
     average: {
         type: Number,
         required: true
-    }
+    },
+    groups:[{
+        type: Schema.ObjectId,
+        ref: "group"
+    }],
 }, {
     timestamps: true
 })

@@ -6,10 +6,11 @@
             <button>Logout</button>
         </form>   
     </div>
+    <%- include('../partials/messages')  %>
     <% const groups = variables[0] %>
     <% for( let i = 0; i < groups.length; i++ ) { %>
         <div><h4><%= groups[i].name %></h4>
-            <a href="">Editar</a>
+            <a href="/editGroupForm/<%= groups[i]._id %>">Editar</a>
             <p><%= groups[i].description %></p>
         </div>
     <% } %>

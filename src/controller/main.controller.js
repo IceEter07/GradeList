@@ -34,13 +34,27 @@ mainController.groupRegisterForm = (req, res) => {
     });
 }
 
-
 mainController.groupRegister = async (req, res) => {
     const {name, description} = req.body;
     const newGroup = new group({name, description})
     await newGroup.save();
 
     res.redirect('/dashboard');
+}
+
+mainController.editGroupForm = async (req, res) => {
+    const groupQuery = await group.findById(req.params.id).lean();
+
+    console.log(groupQuery);
+
+    res.render('main/editGroupForm', {groupQuery})
+}
+
+mainController.updateGroup = async (req, res) => {
+    const {name, description} = req.body;
+    await group.findByIdAndUpdate(req.params.id, {name, description})
+    req.flash('success_msg', 'Grupo actualizado')
+    res.redirect('/dashboard')
 }
 
 module.exports = mainController;
