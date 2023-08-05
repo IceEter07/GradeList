@@ -89,8 +89,9 @@ userController.renderDashboard = (req,res) => {
         template: {
             path: 'users/dashboard',
             title: 'Principal',
-            css: ['main','formRegister']
-        }, messages: []
+            css: ['dashboardUser','aboutUs'],
+        }, 
+        messages: []
     })
 }
 

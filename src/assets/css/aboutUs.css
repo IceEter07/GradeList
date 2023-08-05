@@ -60,6 +60,7 @@ header{
     font-size: 1.5rem;
     cursor: pointer;
     display: none;
+    text-align: center;
 }
 
 .navbar .toggle_btn i img{
@@ -138,6 +139,13 @@ header{
     .dropdown_menu{
         display: block;
     }
+}
+
+@media (min-width:992px) {
+    .navbar .toggle_btn i{
+        display: none;
+    }
+    
 }
 
 @media (max-width: 576px) {
