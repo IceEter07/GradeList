@@ -15,6 +15,7 @@ router.get('/index', usersController.index)
 router.get('/user/editForm/:id', usersController.renderEditForm)
 router.put('/user/edit/:id', usersController.updateUser)
 router.post('/register', usersController.registerUser);
+// router.get('/', userController.aboutUs)
 
 router.post('/login', usersController.signin);
 router.get('/registerForm', usersController.register);

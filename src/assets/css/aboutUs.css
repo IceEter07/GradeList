@@ -60,7 +60,6 @@ header{
     font-size: 1.5rem;
     cursor: pointer;
     display: none;
-    text-align: center;
 }
 
 .navbar .toggle_btn i img{
@@ -141,46 +140,9 @@ header{
     }
 }
 
-@media (min-width:992px) {
-    .navbar .toggle_btn i{
-        display: none;
-    }
-    
-}
-
 @media (max-width: 576px) {
     .dropdown_menu{
         left: 2rem;
         width: unset;
     }
 }
-
-/* .about{
-    margin-top: 2%;
-    backdrop-filter: blur(80px);
-    background-image: url(/img/textura.jpg);
-    display: grid;
-    height: 20rem;
-    justify-items: center;
-}
-
-.about h1{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: center;
-}
-
-.about button{
-    width: 9rem;
-    height: 2.5rem;
-    border-radius: 5px;
-    border: none;
-    background-color: #0E498F;
-    color: white;
-}
-
-.about button:hover{    
-    transition: 0.5s all;
-    background-color: #1c7ff8;
-} */
