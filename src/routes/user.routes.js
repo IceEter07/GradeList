@@ -18,7 +18,6 @@ router.post('/register', usersController.registerUser);
 router.post('/login', usersController.signin);
 router.get('/registerForm', usersController.register);
 // router.post('/registerForm', usersController.renderSignForm);
-router.get('/dashboard',usersController.isLogged, usersController.renderDashboard);
 router.post('/logout',usersController.isLogged, usersController.logout);
 // router.get('/user/logout', userController.logout)
 

@@ -1,6 +1,7 @@
 const userController = {}
 const passport = require('passport');
 const User = require('../models/user')
+const group = require('../models/group')
 
 userController.renderEditForm = async (req, res) =>{
     
@@ -17,40 +18,10 @@ userController.updateUser = async (req, res) =>{
     const {name, ap1, ap2} = req.body
 
     await User.findByIdAndUpdate(req.params.id, {name, ap1, ap2})
-    console.log("User updated succesfully");
     req.flash('success_msg', 'Los datos han sido actualizados correctamente');
     res.redirect(`../../user/editForm/${req.params.id}`)
-    
-    // const emailUser = await User.findOne({email: email})
-    // if(emailUser){
-    //     req.flash('error_msg', 'El correo ya esta en uso');
-        
-    //     //La línea de abajo no se podía ejecutar porque el método put que se hacía desde el formulario
-    //     //hacia que entrara en una "subcarpeta" que no permitia que el redirect funcionara adecuadamente.
-    //     //SE RECOMIENDA REVISIÓN
-    //     res.redirect(`../../user/editForm/${req.params.id}`)
-    // }
-    // else{
-    //     //La línea req.params.id deberá cambiarse una vez que se tenga listo el login
-    //     await User.findByIdAndUpdate(req.params.id, {name, ap1, ap2, email})
-    //     console.log("User updated succesfully");
-    //     req.flash('success_msg', 'Los datos han sido actualizados correctamente');
-    //     res.redirect(`../../user/editForm/${req.params.id}`)
-    // }
-    // // res.redirect('/index')
-    
 }
 
-//controlador que renderiza a la pagina de inicio de sesion
-// userController.renderSignForm = (req, res) => {
-//     res.render('users/formRegister',{
-//         template: {
-//             path: 'users/formRegister',
-//             title: 'Inicio Sesion',
-//             css: ['main','formRegister']
-//         },
-//     })
-// }
 userController.signin = passport.authenticate('local', {
     failureRedirect: '/registerForm',
     successRedirect: '/dashboard',
@@ -71,19 +42,7 @@ userController.logout = (req,res) => {
     })
 }
 
-
-userController.renderDashboard = (req,res) => {
-    res.render('layouts/index',{
-        template: {
-            path: 'users/dashboard',
-            title: 'Principal',
-            css: ['dashboardUser','aboutUs'],
-        }, 
-        messages: []
-    })
-}
-
-// Controlador que renderiza la página del fórmulario de registro de uruario
+// Controlador que renderiza la página del fórmulario de registro de usuario
 userController.register = async (req,res) => {
     res.render('layouts/register',{
         template: {
@@ -107,7 +66,7 @@ userController.registerUser = async (req,res) => {
     const nameExpression = /^(?:[ÁÉÍÓÚÜÑA-Z][áéíóúüña-zA-Z]*\s)*[ÁÉÍÓÚÜÑA-Z][áéíóúüña-zA-Z]*$/;
     const lastnameExpression = /^(?:[ÁÉÍÓÚÜÑA-Z][áéíóúüña-zA-Z]*\s)*[ÁÉÍÓÚÜÑA-Z][áéíóúüña-zA-Z]*$/;
     const emailExpression = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const passExpression = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?!.*\s).{8,}$/;
+    const passExpression = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=.])(?!.*\s).{8,}$/;
     let seguro = true;
     
     // Ciclo que valida los campos del formulario con las expresiones regulares
