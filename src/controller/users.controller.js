@@ -1,6 +1,7 @@
 const userController = {}
 const passport = require('passport');
-const User = require('../models/user')
+const User = require('../models/user');
+const student = require('../models/student');
 
 
 userController.index = (req, res) => {
@@ -156,6 +157,54 @@ userController.registerUser = async (req,res) => {
     }
     
 
+}
+
+userController.renderStudentForm = (req, res) =>{
+    res.render('layouts/index',{
+        template:{
+            path: 'users/addStudent',
+            title: 'Listas',
+            css: []
+        }, messages: []
+    })
+}
+
+userController.addNewStudent = async (req, res) =>{
+    const {name, ap1, ap2, calification, groups} = req.body;
+    const newStudent = new Student({name, ap1, ap2, calification, groups})
+    //Se guarda el ID para aislar los datos entre Alumnos
+    newStudent.user = req.user_id;
+    await newStudent.save();
+    req.flash('succes_msg', 'Se agrego correctamente')
+    res.redirect('/user/student')
+};
+
+userController.renderStudent = async (req, res) =>{
+    const alumnos = await student.find({user: req.user._id});
+    res.render('users/allStudents', { alumnos });
+};
+
+userController.editStudentForm = (req, res) =>{
+    const alumno = student.findById(req.params.id).lean()
+    if(alumno.user!= req.user._id){
+        req.flash('error_msg', 'Not authorized')
+        return res. redirect('/user/student')
+    }
+
+    res.render('/user/editStudent', { alumno });
+}
+
+userController.updateStudent = async (req, res) => {
+    const {name, ap1, ap2, calification, groups} = req.body
+    await student.findByIdAndUpdate(req.params.id, {name, ap1, ap2, calification, groups})
+    req.flash('succes_msg', 'Estudiante actualizado correctamente');
+    res.redirect('/users/student');
+}
+
+userController.deleteStudent = async (req, res) => {
+    await student.findByIdAndDelete(req.params.id)
+    req.flash('succes_msg', 'student eliminado correctamente')
+    res.redirect('/user/student')
 }
 
 module.exports = userController;

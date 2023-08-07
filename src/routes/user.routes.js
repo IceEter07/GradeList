@@ -19,6 +19,10 @@ router.get('/registerForm', usersController.register);
 // router.post('/registerForm', usersController.renderSignForm);
 router.get('/dashboard',usersController.isLogged, usersController.renderDashboard);
 router.post('/logout',usersController.isLogged, usersController.logout);
+router.post('/logout',usersController.isLogged, usersController.logout);
+router.get('/user/student',usersController.isLogged, usersController.renderStudentForm);
+router.post('/user/addStudent',usersController.isLogged, usersController.addNewStudent);
+
 
 
 
