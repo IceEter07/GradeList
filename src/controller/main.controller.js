@@ -3,25 +3,20 @@ const school = require('../models/school')
 const group = require('../models/group')
 const student = require('../models/student')
 
+mainController.renderDashboard = async (req,res) => {
 
-mainController.index = (req, res) => {
+    const groups = await group.find({user: req.user._id}).sort({createdAt: 'desc' }).lean();
+    
     res.render('layouts/index',{
         template: {
-            path: 'main/index',
-            title: 'Passport',
-            css: ['main']
-        }
-    });
-}
-
-mainController.groupView = (req, res) => {
-    res.render('layouts/index',{
-        template: {
-            path: 'main/group',
-            title: 'Group',
-            css: ['main']
-        }
-    });
+            path: 'users/dashboard',
+            title: 'Principal',
+            css: ['main','formRegister']
+        },
+        messages: [],
+        //Se crea variables. En ella se mandan los datos a las vistas.
+        variables: [groups]
+    })
 }
 
 mainController.groupRegisterForm = (req, res) => {
@@ -37,6 +32,7 @@ mainController.groupRegisterForm = (req, res) => {
 mainController.groupRegister = async (req, res) => {
     const {name, description} = req.body;
     const newGroup = new group({name, description})
+    newGroup.user = req.user._id;
     await newGroup.save();
 
     res.redirect('/dashboard');
@@ -44,8 +40,6 @@ mainController.groupRegister = async (req, res) => {
 
 mainController.editGroupForm = async (req, res) => {
     const groupQuery = await group.findById(req.params.id).lean();
-
-    console.log(groupQuery);
 
     res.render('main/editGroupForm', {groupQuery})
 }
@@ -55,6 +49,14 @@ mainController.updateGroup = async (req, res) => {
     await group.findByIdAndUpdate(req.params.id, {name, description})
     req.flash('success_msg', 'Grupo actualizado')
     res.redirect('/dashboard')
+}
+
+mainController.deleteGroup = async (req, res) => {
+    await group.findByIdAndDelete(req.params.id)
+    req.flash('success_msg', 'Grupo eliminado')
+
+    res.redirect('/dashboard')
+
 }
 
 module.exports = mainController;

@@ -12,6 +12,10 @@ const groupSchema = new Schema({
         type: Schema.ObjectId,
         ref: "student"
     }],
+    user:{
+        type: String,
+        required: true
+    },
 }, {
     timestamps: true
 });

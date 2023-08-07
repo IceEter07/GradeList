@@ -25,8 +25,10 @@ app.use(session({
     resave: true,
     saveUninitialized: true,
     store: mongoStore.create({
-        mongoUrl: `mongodb://127.0.0.1/gradelist` 
-    })
+        mongoUrl: `mongodb://127.0.0.1/gradelist` ,
+        autoRemove: 'native' //Mongo elimina la sesión automáticamente
+    }),
+    cookie: {maxAge: 3600000}, //Expiración de la cookie de sesión
 }));
 app.use(passport.initialize());
 app.use(passport.session());

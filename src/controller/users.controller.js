@@ -18,7 +18,6 @@ userController.updateUser = async (req, res) =>{
     const {name, ap1, ap2} = req.body
 
     await User.findByIdAndUpdate(req.params.id, {name, ap1, ap2})
-    console.log("User updated succesfully");
     req.flash('success_msg', 'Los datos han sido actualizados correctamente');
     res.redirect(`../../user/editForm/${req.params.id}`)
 }
@@ -40,23 +39,6 @@ userController.isLogged = (req,res,next) => {
 userController.logout = (req,res) => {
     req.logout(req.user, (err) => {
         res.redirect('/registerForm')
-    })
-}
-
-
-userController.renderDashboard = async (req,res) => {
-
-    const groups = await group.find().sort({createdAt: 'desc' }).lean();
-    
-    res.render('layouts/index',{
-        template: {
-            path: 'users/dashboard',
-            title: 'Principal',
-            css: ['main','formRegister']
-        },
-        messages: [],
-        //Se crea variables. En ella se mandan los datos a las vistas.
-        variables: [groups]
     })
 }
 
