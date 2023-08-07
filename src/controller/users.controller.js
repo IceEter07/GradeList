@@ -77,8 +77,9 @@ userController.renderDashboard = (req,res) => {
         template: {
             path: 'users/dashboard',
             title: 'Principal',
-            css: ['main','formRegister']
-        }, messages: []
+            css: ['dashboardUser','aboutUs'],
+        }, 
+        messages: []
     })
 }
 
@@ -99,8 +100,12 @@ userController.registerUser = async (req,res) => {
     const {name, ap1, ap2, email, password, confirm_password} = req.body
     
     // Espresiones regulares para las validaciones de los campos del formulario
-    const nameExpression = /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]*( [A-ZÁÉÍÓÚÑ][a-záéíóúñ]*){0,}$/;
-    const lastnameExpression = /^[A-Z][a-zA-Z]*( [A-Z][a-zA-Z]*){0,}$/;
+    
+    // const nameExpression = /^[A-ZÁÉÍÓÚÑ][a-záéíóúñ]*( [A-ZÁÉÍÓÚÑ][a-záéíóúñ]*){0,}$/;
+    // const lastnameExpression = /^[A-Z][a-zA-Z]*( [A-Z][a-zA-Z]*){0,2}$/;
+    
+    const nameExpression = /^(?:[ÁÉÍÓÚÜÑA-Z][áéíóúüña-zA-Z]*\s)*[ÁÉÍÓÚÜÑA-Z][áéíóúüña-zA-Z]*$/;
+    const lastnameExpression = /^(?:[ÁÉÍÓÚÜÑA-Z][áéíóúüña-zA-Z]*\s)*[ÁÉÍÓÚÜÑA-Z][áéíóúüña-zA-Z]*$/;
     const emailExpression = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const passExpression = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?!.*\s).{8,}$/;
     let seguro = true;
@@ -110,7 +115,7 @@ userController.registerUser = async (req,res) => {
         req.flash('errorName', 'El nombre debe iniciar con mayúsculas al inicio y despues de cada espacio');
         seguro = false;
     }if(!ap1.match(lastnameExpression)){
-        req.flash('errorLast1', 'El apellido debe iniciar con mayúsculas al inicio y despues de cada espacio');
+        req.flash('errorLast1', 'El primer apellido debe iniciar con mayúsculas al inicio y despues de cada espacio');
         seguro = false;
     }if(!ap2.match(lastnameExpression)){
         req.flash('errorLast2', 'El segundo apellido debe iniciar con mayúsculas al inicio y despues de cada espacio');
@@ -142,8 +147,16 @@ userController.registerUser = async (req,res) => {
             res.redirect('/registerForm');
         }
     }
-    
+}
 
+userController.aboutUs = (req,res) => {
+    res.render('layouts/aboutUs',{
+        template: {
+            path: ['partials/navbar','partials/infoContainer'],
+            title: 'AboutUs',
+            css: ['main','aboutUs']
+        }
+    });
 }
 
 module.exports = userController;
