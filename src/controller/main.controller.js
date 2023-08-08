@@ -11,7 +11,8 @@ mainController.renderDashboard = async (req,res) => {
         template: {
             path: 'users/dashboard',
             title: 'Principal',
-            css: ['main','formRegister']
+            css: ['dashboardUser', 'aboutUs'],
+            js: ['emergente']
         },
         messages: [],
         //Se crea variables. En ella se mandan los datos a las vistas.

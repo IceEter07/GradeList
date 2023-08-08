@@ -8,8 +8,8 @@
             </div>
             <form action="/user/edit/<%= user._id %>?_method=PUT" method="post" class="form">
                 <input type="hidden" name="method" value="PUT">
-                <input type="text" name="name" class="formInput" value="<%= user.name %>">
-                <input type="text" name="ap1" class="formInput" value="<%= user.ap1 %>">
+                <input type="text" name="name" class="formInput" value="<%= user.name %>" required>
+                <input type="text" name="ap1" class="formInput" value="<%= user.ap1 %>" required>
                 <input type="text" name="ap2" class="formInput" value="<%= user.ap2 %>">
                 <button type="submit" class="btnSubmit">Guardar</button>
             </form>

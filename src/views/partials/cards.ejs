@@ -14,31 +14,38 @@
 
     <div class="groups container">
 
-        <a href="" class="addGroup">
+        <a class="addGroup" onclick="mostrar(this)">
             <h3>Hacer nuevo grupo</h3>
-            <b style="font-size: xx-large;">+</b>  
+            <b style="font-size: xx-large;">+</b>
         </a>
+        
+        <% const groups=variables[0] %>
+        <% for( let i=0; i < groups.length; i++ ) { %>
+        <a href="#" class="gruop" onclick="mostrarEditForm(this)">
+            <h2><%= groups[i].name %></h2>
+            <hr>
+            <span><%= groups[i].description %></span>
 
-        <a href="" class="gruop">
-            <h2>Grupo 1</h2>
-            <hr>
-            <span>135</span>  <span> Estudiantes</span>
-        </a>
-        <a href="" class="gruop">
-            <h2>Grupo 2</h2>
-            <hr>
-            <span>135</span>  <span> Estudiantes</span>
-        </a>
-        <a href="" class="gruop">
-            <h2>Grupo 3</h2>
-            <hr>
-            <span>135</span>  <span> Estudiantes</span>
-        </a>
-        <a href="" class="gruop">
-            <h2>Grupo 3</h2>
-            <hr>
-            <span>135</span>  <span> Estudiantes</span>
-        </a>
-    </div>       
+            <form action="/editGroupForm/<%= groups[i]._id %>" method="get">
+                <button type="submit">Editar</button>
+            </form>
 
+            <form action="deleteGroup/<%= groups[i]._id %>?_method=DELETE" method="post">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Delete</button>
+            </form>
+
+            <% } %>
+        </a>
+    </div>
+
+</div>
+
+<div id="emergente">
+    <button onclick="mostrar()" id="cerrarEmergente">&times;</button>
+    <form action="/groupRegister" method="post" id="formEmergente">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="description" placeholder="Description" required>
+        <button id="btnCrearGrupo">Crear</button>
+    </form>
 </div>

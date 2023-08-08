@@ -10,8 +10,8 @@ const userController = require('../controller/users.controller');
 // router.get('/user/signin', userController.renderSignInForm)
 // router.post('/user/signin', userController.signIn)
 
-router.get('/user/editForm/:id', usersController.renderEditForm)
-router.put('/user/edit/:id', usersController.updateUser)
+router.get('/user/editForm/:id', usersController.isLogged, usersController.renderEditForm)
+router.put('/user/edit/:id', usersController.isLogged, usersController.updateUser)
 router.post('/register', usersController.registerUser);
 // router.get('/', userController.aboutUs)
 

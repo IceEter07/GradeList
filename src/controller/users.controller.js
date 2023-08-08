@@ -10,7 +10,8 @@ userController.renderEditForm = async (req, res) =>{
     template:{
         path: 'users/editUser',
         title: 'Edit User',
-        css: ['main','userEdit']
+        css: ['main','userEdit'],
+        js: []
     }})
 }
 
