@@ -55,15 +55,7 @@ userController.updateUser = async (req, res) =>{
 }
 
 //controlador que renderiza a la pagina de inicio de sesion
-// userController.renderSignForm = (req, res) => {
-//     res.render('users/formRegister',{
-//         template: {
-//             path: 'users/formRegister',
-//             title: 'Inicio Sesion',
-//             css: ['main','formRegister']
-//         },
-//     })
-// }
+
 userController.signin = passport.authenticate('local', {
     failureRedirect: '/registerForm',
     successRedirect: '/dashboard',
@@ -73,14 +65,14 @@ userController.signin = passport.authenticate('local', {
 userController.isLogged = (req,res,next) => {
     if (req.isAuthenticated()) {
         return next();
-    } else {
+    } else{
         res.redirect("/registerForm")
     }
 }
 
 userController.logout = (req,res) => {
     req.logout(req.user, (err) => {
-        res.redirect('/registerForm')
+        res.redirect('/registerForm',)
     })
 }
 
@@ -171,7 +163,7 @@ userController.renderStudentForm = (req, res) =>{
 
 userController.addNewStudent = async (req, res) =>{
     const {name, ap1, ap2, calification, groups} = req.body;
-    const newStudent = new Student({name, ap1, ap2, calification, groups})
+    const newStudent = new student({name, ap1, ap2, calification, groups})
     //Se guarda el ID para aislar los datos entre Alumnos
     newStudent.user = req.user_id;
     await newStudent.save();
