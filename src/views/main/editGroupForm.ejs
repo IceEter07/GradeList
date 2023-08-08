@@ -1,0 +1,12 @@
+<h1>Edit form</h1>
+
+<form action="/updateGroup/<%= groupQuery._id %>" method="post">
+    <input type="text" name="name" value="<%= groupQuery.name %>">
+    <input type="text" name="description" value="<%= groupQuery.description %>">
+    <button>Editar</button>
+</form>
+
+<dialog open>
+    <p>Greetings, one and all!</p>
+  </dialog>
+  
