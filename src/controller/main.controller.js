@@ -6,6 +6,7 @@ const student = require('../models/student')
 mainController.renderDashboard = async (req,res) => {
 
     const groups = await group.find({user: req.user._id}).sort({createdAt: 'desc' }).lean();
+    const institutions = await  school.find({user: req.user._id}).sort({createdAt: 'desc' }).lean();
     
     res.render('layouts/index',{
         template: {
@@ -16,7 +17,7 @@ mainController.renderDashboard = async (req,res) => {
         },
         messages: [],
         //Se crea variables. En ella se mandan los datos a las vistas.
-        variables: [groups]
+        variables: [groups, institutions]
     })
 }
 
@@ -35,13 +36,13 @@ mainController.groupRegister = async (req, res) => {
     const newGroup = new group({name, description})
     newGroup.user = req.user._id;
     await newGroup.save();
-
+    
     res.redirect('/dashboard');
 }
 
 mainController.editGroupForm = async (req, res) => {
     const groupQuery = await group.findById(req.params.id).lean();
-
+    
     res.render('main/editGroupForm', {groupQuery})
 }
 
@@ -55,9 +56,16 @@ mainController.updateGroup = async (req, res) => {
 mainController.deleteGroup = async (req, res) => {
     await group.findByIdAndDelete(req.params.id)
     req.flash('success_msg', 'Grupo eliminado')
-
+    
     res.redirect('/dashboard')
+}
 
+mainController.registerInstitution = async (req,res) => {
+    const {name} = req.body;
+    const newInstitution = new school({name});
+    newInstitution.user = req.user._id
+    await newInstitution.save();
+    res.redirect('/dashboard');
 }
 
 module.exports = mainController;

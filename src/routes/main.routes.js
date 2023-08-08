@@ -13,7 +13,7 @@ router.post('/updateGroup/:id', mainController.updateGroup)
 
 router.delete('/deleteGroup/:id', mainController.deleteGroup)
 
-
+router.post('/registerInstitution', mainController.registerInstitution);
 
 
 module.exports = router;

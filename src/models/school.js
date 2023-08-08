@@ -6,8 +6,9 @@ const schoolSchema = new Schema({
         type: String,
         required: true,
     },
-    description:{
+    user:{
         type: String,
+        required: true
     },
     group:[{
         type: Schema.ObjectId,
