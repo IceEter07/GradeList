@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <% for( let i = 0; i < template.css.length; i++ ) { %>
+    <% for( let i=0; i < template.css.length; i++ ) { %>
         <link rel="stylesheet" href="/css/<%-template.css[i]%>.css">
-    <% } %>
-    <title><%=template.title%></title>
+        <% } %>
+            <title>
+                <%=template.title%>
+            </title>
 </head>
-<body>
+
+<body id="body">
     <%- include (`../${template.path}`) %>
+
+        <% for( let i=0; i < template.js.length; i++ ) { %>
+            <script src="/js/<%-template.js[i]%>.js"></script>
+            <% } %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </body>
+
 </html>

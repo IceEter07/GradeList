@@ -1,0 +1,59 @@
+<head>
+    <div class="navbar">
+        <div class="logo"><a href="#">Logo Grade List</a></div>
+        <ul class="links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="/user/editForm/<%= user._id %>">Mis datos</a></li>
+        </ul>
+        <a href="/registerForm" class="action_btn">Get Started</a>
+        <div id="btn" class="toggle_btn">
+            <i><img src="/img/menu.png" onclick="ocultar()" alt="IMAGEN MENU"></i>
+        </div>
+    </div>
+    
+    <div class="dropdown_menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="/registerForm" onclick="ocultar()" class="action_btn">Get Started</a></li>
+    </div>
+</head>
+
+<script>
+    const toggleBtn = document.querySelector('#btn');
+    const toggleBtnIcon = document.querySelector('.toggle_btn i img');
+    const dropDownMenu = document.querySelector('.dropdown_menu');
+
+    console.log(toggleBtn);
+    console.log(toggleBtnIcon);
+    
+    const ocultar = () => {
+            dropDownMenu.classList.toggle('open')   
+                const isOpen = dropDownMenu.classList.contains('open')
+
+            if (toggleBtn.classList = isOpen) {
+              toggleBtnIcon.src = '/img/cancel.png'  
+            }else{
+                toggleBtnIcon.src = '/img/menu.png'  
+            }
+    }
+
+    // const Ocultar = () => {
+        
+    //     dropDownMenu.classList.toggle('open')
+    //     const isOpen = dropDownMenu.classList.contains('open')
+    
+        
+    //     if (toggleBtn.classList = isOpen) {
+    //       toggleBtnIcon.src = '/img/cancel.png'  
+    //     }else{
+    //         toggleBtnIcon.src = '/img/menu.png'  
+    //     }
+    // }
+
+
+</script>
