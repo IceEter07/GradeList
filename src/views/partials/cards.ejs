@@ -7,10 +7,10 @@
         <div class="institution">
             <a href=""><button>Institución 1</button></a>
         </div>
-        <div class="addInstitution">
+        <div  class="addInstitution">
             <!-- <input type="checkbox" id="btnModal">
             <label for="btnModal" class="lblModal">Agregar Institución</label> -->
-            <a href=""><button><b style="font-size: medium;">Agregar institución </b></button></a>
+            <button onclick="mostrar(this)" class="instituciones"><b style="font-size: medium;">Agregar institución </b></button>
         </div>
     </div>
 
@@ -43,11 +43,20 @@
 
 </div>
 
-<div id="emergente">
-    <button onclick="mostrar()" id="cerrarEmergente">&times;</button>
+<div id="emergente" style="display: none;">
+    <button onclick="mostrar(this)" class="addGroup" id="cerrarEmergente">&times;</button>
     <form action="/groupRegister" method="post" id="formEmergente">
         <input type="text" name="name" placeholder="Name" required>
         <input type="text" name="description" placeholder="Description" required>
         <button id="btnCrearGrupo">Crear</button>
+    </form>
+</div>
+
+<div id="institucionesForm" style="display: none;">
+    <button onclick="mostrar(this)" id="cerrarEmergenteInstituciones" tipo="asdf" class="instituciones">&times;</button>
+    <form action="" method="post" id="formEmergenteInstituciones">
+        <label for="">NUEVA INSTITUCIÓN</label>
+        <input type="text" name="name" placeholder="Nombre de la institución" required>
+        <button id="btnCrearInstitucion">Crear</button>
     </form>
 </div>
