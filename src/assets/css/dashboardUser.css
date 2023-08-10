@@ -120,7 +120,7 @@ body{
     /* bottom: 30%; */
     top: 30%;
     background-color: #FCF9EA;
-    box-shadow: 10px 10px 6px 2px rgba(0,0,0,0.09);
+    box-shadow: 0px 0px 20px 6px rgba(0,0,0,0.09);;
 }
 
 #emergente form{
@@ -177,6 +177,197 @@ body{
 }
 
 
+/* FORMULARIO DE AGREGAR INSTITUCIONES */
+            /* INICIO */
+
+#institucionesForm{
+    display: none;
+}
+
+#institucionesForm{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    padding: 3%;
+    left: 30%;
+    right: 30%;
+    /* bottom: 30%; */
+    top: 30%;
+    background-color: #FCF9EA;
+    box-shadow: 0px 0px 20px 6px rgba(0,0,0,0.09);;
+    
+}
+
+#institucionesForm form{
+    display: flex;
+    flex-direction: column;
+}
+
+#institucionesForm form input{
+    padding: 2%;
+    width: 100%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border: 1px solid #b5b1b1;
+}
+
+#cerrarEmergenteInstituciones{
+    background-color: transparent;
+    width: fit-content;
+    align-self: flex-end;
+    font-size: larger;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+} 
+
+#btnCrearInstitucion{
+    margin: 1% 0% 1% 0%;
+    padding: 2% 4% 2% 4%;
+    align-self: flex-end;
+}
+
+#btnCrearInstitucion{
+    margin: 1% 0% 1% 0%;
+    padding: 2% 4% 2% 4%;
+    align-self: flex-end;
+    border: 1px solid #0E498F;
+    background-color: #0E498F;
+    color: white;
+    Transition: 0.6s;
+    Border-radius: 5px;
+}
+
+#btnCrearInstitucion:hover{
+    color: white;
+    background-color: #1c7ff8;
+    Transition: 0.6s;
+    Border-radius: 5px;
+}
+
+
+#divFormRegister{
+    display: flex;
+}
+     
+
+#institucionesForm form label{
+    margin-top: 2%;
+    margin-right: 2%;
+}
+            /* FIN  */
+/* FORMULARIO DE AGREGAR INSTITUCIONES */
+
+
+/* FORMULARIO PARA ELIMINAR UN GRUPO */
+            /* INICIO */
+
+#eliminarForm{
+    flex-direction: column;
+    position: absolute;
+    padding: 3%;
+    left: 30%;
+    right: 30%;
+    /* bottom: 30%; */
+    top: 30%;
+    background-color: #FCF9EA;
+    box-shadow: 0px 0px 20px 6px rgba(0,0,0,0.09);;
+    display: flex;
+}
+
+#eliminarForm form{
+    display: flex;
+    flex-direction: column;
+}
+
+#eliminarForm form input{
+    padding: 2%;
+    width: 100%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border: 1px solid #b5b1b1;
+}
+
+#cerrarEmergenteEliminar{
+    background-color: transparent;
+    width: fit-content;
+    align-self: flex-end;
+    font-size: larger;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+} 
+
+#btnEliminar{
+    cursor: pointer;
+    margin: 1% 0% 1% 0%;
+    padding: 2% 4% 2% 4%;
+    align-self: flex-end;
+}
+
+#btnEliminar{
+    margin: 1% 0% 1% 0%;
+    padding: 2% 4% 2% 4%;
+    align-self: flex-end;
+    border: none;
+    background-color: #c92727;
+    color: white;
+    Transition: 0.6s;
+    Border-radius: 5px;
+}
+
+#btnEliminar:disabled{
+    background-color: #b5b1b1 ;
+    cursor: default;
+}
+
+/* #btnEliminar:hover{
+    color: white;
+    background-color: rgb(151, 31, 31);
+
+    Transition: 0.6s;
+    Border-radius: 5px;
+} */
+
+#eliminarForm form label{
+    margin-top: 2%;
+    margin-right: 2%;
+}
+            
+            /*  FIN   */
+/* FORMULARIO PARA ELIMINAR UN GRUPO */
+
+.editar a{
+    background-color: lightgrey;;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    color: black;
+    padding: 1%;
+    border-radius: 4px;
+}
+
+.eliminar a{
+    padding: 1%;
+    background-color: rgb(201, 39, 39);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1%;
+    color: white;
+    border-radius: 4px;
+}
+
+.eliminar:hover{
+    color: white;
+    background-color: rgb(161, 37, 37);
+    transition: all 0.2s;
+}
+
 
 @media (max-width: 1020px) {
     .groups a{
@@ -214,3 +405,58 @@ body{
         flex-basis: 100%;
     }
 }
+
+/* ESTILOS DE FORMULARIO DE EDITAR INSTITUCIÓN */
+                /* INICIO */
+
+.formInstitution{
+    /* background-color: #E7E6E4; */
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    padding: 1%;
+}
+
+.formInstitution form{
+    width: 28rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1%;
+    background-color: rgba(227, 227, 227, 0.87);
+    border-radius: 4px;
+    box-shadow: 3px 3px 9px 1px rgba(0,0,0,0.09);
+}
+
+.formInstitution form h1{
+    margin-bottom: 2%;
+}
+
+.formInstitution form input{
+    width: 15rem;
+    margin-top: 0.3rem;
+    padding: 0.3rem;
+    border-radius: 3px;
+    border: none;
+}
+
+.formInstitution form button{
+    margin-top: 2%;
+    padding: 0.5rem;
+    border: none;
+    margin-bottom: 1%;
+    border-radius: 4px;
+    background-color: #0E498F;
+    color: white;
+    width: 5rem;
+    cursor: pointer;
+}
+
+.formInstitution form button:hover{
+    background-color: #1c7ff8;
+    scale: 1.05;
+    transition: all 0.3s;
+}
+
+                /*  FIN   */
+/* ESTILOS DE FORMULARIO DE EDITAR INSTITUCIÓN */

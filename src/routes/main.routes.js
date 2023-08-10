@@ -13,7 +13,12 @@ router.post('/updateGroup/:id', mainController.updateGroup)
 
 router.delete('/deleteGroup/:id', mainController.deleteGroup)
 
+// Rutas de instituciones
+router.post('/registerInstitution', mainController.registerInstitution);
+router.get('/showInstitution/:id', mainController.showInstitutions);
+router.get('/editInstitution/:id', mainController.editInstitution);
+router.post('/updateInstitution/:id', mainController.updateInstitution);
 
-
+router.post('/deleteInstitution/:id', mainController.deleteInstitution);
 
 module.exports = router;
