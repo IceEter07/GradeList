@@ -1,21 +1,20 @@
 <div class="cards">
 
-    <div class="institutions container">
-        <b>Instituciones</b>
+    <div class="institutions">
+        <% const institutions = variables[1] %>
+        <b id="nombre"> <%= institutions.name %> </b>
         <hr>
 
-        <div class="institution">
-            <% const institutions = variables[1] %>
-            <% for( let i = 0; i < institutions.length; i++ ) { %>
-                <a href="/showInstitution/<%-institutions[i]._id%>"><button><%=institutions[i].name%></button></a>
-            <% } %>
-        </div>
-        <div  class="addInstitution">
-            <button onclick="mostrar(this)" class="instituciones"><b style="font-size: medium;">Agregar institución </b></button>
+        <div class="editar">
+            <% const institution = variables[1] %>
+            <a class="editar" href="/editInstitution/<%- institution._id %>">Editar</a>
+        </div> 
+        <div class="eliminar">
+            <a class="eliminar" id="eliminar" onclick="mostrar(this)">Eliminar</a>
         </div>
     </div>
 
-    <div class="groups container">
+    <div class="groups">
 
         <a class="addGroup" onclick="mostrar(this)">
             <h3>Hacer nuevo grupo</h3>
@@ -54,10 +53,20 @@
 </div>
 
 <div id="institucionesForm" style="display: none;">
-    <button onclick="mostrar(this)" id="cerrarEmergenteInstituciones" tipo="asdf" class="instituciones">&times;</button>
+    <button onclick="mostrar(this)" id="cerrarEmergenteInstituciones" class="instituciones">&times;</button>
     <form action="/registerInstitution" method="post" id="formEmergenteInstituciones">
         <label for="">NUEVA INSTITUCIÓN</label>
         <input type="text" name="name" placeholder="Nombre de la institución" required>
         <button id="btnCrearInstitucion">Crear</button>
+    </form>
+</div>
+
+<div id="eliminarForm" style="display: none;" >
+    <button onclick="mostrar(this)" class="eliminar" id="cerrarEmergenteEliminar">&times;</button>
+    <form action="/deleteInstitution/<%- institutions._id %>" method="post" id="formEmergenteEliminar">
+        <h2 style="color: red;">ELIMINAR INSTITUCIÓN</h2>
+        <label for="">Escribe "<%- institution.name %>" para eliminar la institución </label>
+        <input type="text" id="nombreInstitucion" name="name" required>
+        <button disabled id="btnEliminar">Eliminar</button>
     </form>
 </div>

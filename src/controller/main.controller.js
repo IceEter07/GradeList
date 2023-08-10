@@ -7,7 +7,7 @@ mainController.renderDashboard = async (req,res) => {
 
     const groups = await group.find({user: req.user._id}).sort({createdAt: 'desc' }).lean();
     const institutions = await  school.find({user: req.user._id}).sort({createdAt: 'desc' }).lean();
-    
+
     res.render('layouts/index',{
         template: {
             path: 'users/dashboard',
@@ -36,13 +36,11 @@ mainController.groupRegister = async (req, res) => {
     const newGroup = new group({name, description})
     newGroup.user = req.user._id;
     await newGroup.save();
-    
     res.redirect('/dashboard');
 }
 
 mainController.editGroupForm = async (req, res) => {
     const groupQuery = await group.findById(req.params.id).lean();
-    
     res.render('main/editGroupForm', {groupQuery})
 }
 
@@ -56,7 +54,6 @@ mainController.updateGroup = async (req, res) => {
 mainController.deleteGroup = async (req, res) => {
     await group.findByIdAndDelete(req.params.id)
     req.flash('success_msg', 'Grupo eliminado')
-    
     res.redirect('/dashboard')
 }
 
@@ -65,6 +62,52 @@ mainController.registerInstitution = async (req,res) => {
     const newInstitution = new school({name});
     newInstitution.user = req.user._id
     await newInstitution.save();
+    res.redirect('/dashboard');
+}
+
+mainController.showInstitutions = async (req,res) => {
+
+    const groups = await group.find({user: req.user._id}).sort({createdAt: 'desc' }).lean();
+    const institutions = await school.findById(req.params.id).lean();
+    
+    res.render('layouts/index',{
+        template: {
+            path: 'main/institutions',
+            title: 'Principal',
+            css: ['dashboardUser', 'aboutUs'],
+            js: ['emergente','eliminar']
+        },
+        messages: [],
+        //Se crea variables. En ella se mandan los datos a las vistas.
+        variables: [groups, institutions]
+    })
+}
+
+mainController.editInstitution = async (req,res) => {
+    
+    const institution = await school.findById(req.params.id).lean();
+    
+    res.render('layouts/index',{
+        template: {
+            path: 'main/editInstitutions',
+            title: 'Edit Institutions',
+            css: ['dashboardUser', 'aboutUs'],
+            js: [],
+        },
+        variables: [institution]
+    })
+}
+
+mainController.updateInstitution = async (req,res) => {
+    const {name} = req.body;
+    await school.findByIdAndUpdate(req.params.id, {name})
+    res.redirect(`/showInstitution/${req.params.id}`);
+}
+
+mainController.deleteInstitution = async (req,res) => {
+    console.log('ENTRA');
+    console.log(req.params.id);
+    await school.findByIdAndDelete(req.params.id)
     res.redirect('/dashboard');
 }
 
