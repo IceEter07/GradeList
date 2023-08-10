@@ -1,7 +1,7 @@
 const mainController = {}
-const school = require('../models/school')
-const group = require('../models/group')
-const student = require('../models/student')
+const school = require('../models/school');
+const group = require('../models/group');
+const student = require('../models/student');
 
 mainController.renderDashboard = async (req,res) => {
 
@@ -32,11 +32,18 @@ mainController.groupRegisterForm = (req, res) => {
 }
 
 mainController.groupRegister = async (req, res) => {
+
+    const idInstitution = req.session.institutions._id
     const {name, description} = req.body;
     const newGroup = new group({name, description})
+    newGroup.school = idInstitution;
     newGroup.user = req.user._id;
+    await school.findByIdAndUpdate(idInstitution, {$push: { group: newGroup._id.toString() }}).lean();    
     await newGroup.save();
-    res.redirect('/dashboard');
+    // res.redirect('/dashboard');
+    res.redirect(`/showInstitution/${idInstitution}`);
+
+    
 }
 
 mainController.editGroupForm = async (req, res) => {
@@ -66,10 +73,11 @@ mainController.registerInstitution = async (req,res) => {
 }
 
 mainController.showInstitutions = async (req,res) => {
-
-    const groups = await group.find({user: req.user._id}).sort({createdAt: 'desc' }).lean();
-    const institutions = await school.findById(req.params.id).lean();
     
+    const institutions = await school.findById(req.params.id).lean();
+    req.session.institutions = institutions
+    const groups = await group.find({user: req.user._id, school: institutions._id}).sort({createdAt: 'desc' }).lean();
+        
     res.render('layouts/index',{
         template: {
             path: 'main/institutions',
@@ -80,8 +88,8 @@ mainController.showInstitutions = async (req,res) => {
         messages: [],
         //Se crea variables. En ella se mandan los datos a las vistas.
         variables: [groups, institutions]
-    })
-}
+    });
+};
 
 mainController.editInstitution = async (req,res) => {
     
@@ -105,7 +113,6 @@ mainController.updateInstitution = async (req,res) => {
 }
 
 mainController.deleteInstitution = async (req,res) => {
-    console.log('ENTRA');
     console.log(req.params.id);
     await school.findByIdAndDelete(req.params.id)
     res.redirect('/dashboard');
