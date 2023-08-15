@@ -48,7 +48,17 @@ mainController.groupRegister = async (req, res) => {
 
 mainController.editGroupForm = async (req, res) => {
     const groupQuery = await group.findById(req.params.id).lean();
-    res.render('main/editGroupForm', {groupQuery})
+    res.render('layouts/index',{
+        template: {
+            path: 'main/editGroupForm',
+            title: 'Edit Group',
+            css: ['dashboardUser', 'aboutUs'],
+            js: ['emergente','eliminar']
+        },
+        messages: [],
+        //Se crea variables. En ella se mandan los datos a las vistas.
+        variables: [groupQuery]
+    });
 }
 
 mainController.updateGroup = async (req, res) => {
@@ -113,9 +123,9 @@ mainController.updateInstitution = async (req,res) => {
 }
 
 mainController.deleteInstitution = async (req,res) => {
-    console.log(req.params.id);
     await school.findByIdAndDelete(req.params.id)
     res.redirect('/dashboard');
+
 }
 
 module.exports = mainController;

@@ -1,12 +1,12 @@
-<h1>Edit form</h1>
+<%- include('../partials/navbar') %>
+<%- include('../partials/breadCrumbles') %>
+<div class="formInstitution">
+    <% const groupQuery = variables[0] %>
+    <form action="/updateGroup/<%= groupQuery._id %>" method="post">
+        <h1>Edit form</h1>
+        <input type="text" name="name" value="<%= groupQuery.name %>">
+        <input type="text" name="description" value="<%= groupQuery.description %>">
+        <button>Editar</button>
+    </form>
 
-<form action="/updateGroup/<%= groupQuery._id %>" method="post">
-    <input type="text" name="name" value="<%= groupQuery.name %>">
-    <input type="text" name="description" value="<%= groupQuery.description %>">
-    <button>Editar</button>
-</form>
-
-<dialog open>
-    <p>Greetings, one and all!</p>
-  </dialog>
-  
+</div>

@@ -2,7 +2,6 @@ const { Router } = require('express')
 const router = Router();
 
 const usersController = require('../controller/users.controller');
-const userController = require('../controller/users.controller');
 
 // router.get('/user/signup', userController.renderSignUpForm)
 // router.post('/user/signup', userController.signUp)
@@ -21,6 +20,6 @@ router.get('/registerForm', usersController.register);
 router.post('/logout',usersController.isLogged, usersController.logout);
 // router.get('/user/logout', userController.logout)
 
-router.get('/', userController.aboutUs)
+router.get('/', usersController.aboutUs)
 
 module.exports = router;
