@@ -13,6 +13,16 @@ router.post('/updateGroup/:id', mainController.updateGroup)
 
 router.delete('/deleteGroup/:id', mainController.deleteGroup)
 
+//Rutas de los estudiantes
+router.post('/user/addStudent',usersController.isLogged, mainController.addNewStudent);
+router.get('/user/allStudent',usersController.isLogged, mainController.renderStudent);
+
+router.get('/editStudentForm/:id', usersController.isLogged, mainController.editStudentForm)
+router.post('/updateStudent/:id', usersController.isLogged, mainController.updateStudent)
+router.post('/deleteStudent/:id', usersController.isLogged, mainController.deleteStudent)
+
+
+
 
 
 
