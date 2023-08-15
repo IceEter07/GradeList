@@ -116,10 +116,29 @@ input[type="submit"]:hover{
     cursor: pointer;
     background-color: rgba(1,2,3,0);
 }
+
+.botonBorrar{
+    margin-left: 70%;
+    border: none;
+    align-items: center;
+    font-size: x-large;
+    cursor: pointer;
+    background-color: rgba(1,2,3,0);
+}
+
+.alertError{
+    background-color: rgba(215, 116, 116, 0.586);
+    padding: 0.5%;
+    margin: 1%;
+    display: grid;
+    grid-template-columns: 90% 10%;
+    align-items: center;
+    text-align: center;
+}
 .container{
     width: 100%;
     height: 100vh;
-    padding: 10px;
+    padding: 2% 2% 2% 2%;
     display: flex;
     justify-content: center;
     align-items: center;

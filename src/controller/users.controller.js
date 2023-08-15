@@ -1,7 +1,19 @@
 const userController = {}
 const passport = require('passport');
 const User = require('../models/user')
-const group = require('../models/group')
+
+
+
+userController.index = (req, res) => {
+    res.render('layouts/index',{
+        template: {
+            path: 'users/editUser',
+            title: 'Passport',
+            css: ['main','userEdit']
+        }
+    });
+}
+
 
 userController.renderEditForm = async (req, res) =>{
     
@@ -23,6 +35,16 @@ userController.updateUser = async (req, res) =>{
     res.redirect(`../../user/editForm/${req.params.id}`)
 }
 
+//controlador que renderiza a la pagina de inicio de sesion
+// userController.renderSignForm = (req, res) => {
+//     res.render('users/formRegister',{
+//         template: {
+//             path: 'users/formRegister',
+//             title: 'Inicio Sesion',
+//             css: ['main','formRegister']
+//         },
+//     })
+// }
 userController.signin = passport.authenticate('local', {
     failureRedirect: '/registerForm',
     successRedirect: '/dashboard',
@@ -32,14 +54,14 @@ userController.signin = passport.authenticate('local', {
 userController.isLogged = (req,res,next) => {
     if (req.isAuthenticated()) {
         return next();
-    } else {
+    } else{
         res.redirect("/registerForm")
     }
 }
 
 userController.logout = (req,res) => {
     req.logout(req.user, (err) => {
-        res.redirect('/registerForm')
+        res.redirect('/registerForm',)
     })
 }
 
@@ -118,5 +140,4 @@ userController.aboutUs = (req,res) => {
         }
     });
 }
-
 module.exports = userController;

@@ -1,0 +1,19 @@
+
+<div class="contenedorEditForm">
+    <h1 style="color: blue; text-align: center;">Edit form</h1>
+    <hr>
+    <% const alumno = variables[0] %>
+    <% console.log(alumno); %>
+    <div class="contenedorInput">
+        <form action="/updateStudent/<%-alumno._id%>" method="post">
+            <input type="text" name="name" value="<%= alumno.name %>">
+            <input type="text" name="ap1" value="<%= alumno.ap1 %>">
+            <input type="text" name="ap2" value="<%= alumno.ap2 %>">
+            <div class="botn">
+                <button style="width: 20%;">Editar</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+

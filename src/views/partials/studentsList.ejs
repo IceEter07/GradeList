@@ -1,0 +1,55 @@
+
+<div class="container">
+    <div class="studentStats">
+        <b>Estatus</b>
+        <hr>
+        <div class="institution">
+            <!-- <a href=""><button>Institución 1</button></a> -->
+        </div>
+        <div class="addStudents">
+            <a onclick="mostrar()"><button><b style="font-size: medium;">Agregar Alumno </b></button></a>
+        </div>
+    </div>
+    <div class="listContainer container">
+        <table>
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% const alumnos=variables[0] %>
+                <% for( let i=0; i < alumnos.length; i++ ) { %>
+                    <tr>
+                        <td><%= alumnos[i].name %></td>
+                        <td><%= alumnos[i].ap1 %></td>
+                        <td><%= alumnos[i].ap2 %></td>
+                        <td>
+                            <div class="accionesAlumnos">
+                                <a href="/editStudentForm/<%= alumnos[i]._id %>"><button class="btn-edit">Editar</button></a>
+                                <form action="/deleteStudent/<%- alumnos[i]._id %>" method="post">
+                                    <a><button class="btn-delete">Eliminar</button></a>
+                                </form>
+                            </div>
+
+                        </td>
+                    <tr>
+                <% } %>             
+            </tbody>
+          </table>
+    </div>
+</div>
+
+<div id="emergente" class="emergente" style="display: none;">
+    <h2 class="studentAdd">Agregar estudiante</h2>
+    <button onclick="mostrar()" id="cerrarEmergente" class="cerrarEmergente">&times;</button>
+    <form action="/user/addStudent" method="post" id="formEmergente">
+        <input name="name" type="text" placeholder="Nombre" required autofocus>
+        <input name="ap1" type="text" placeholder="Apellido Paterno" required>
+        <input name="ap2" type="text" placeholder="Apellido Paterno" required>
+        <button id="btnCrearGrupo">Crear</button>
+    </form>
+</div> 

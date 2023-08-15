@@ -1,14 +1,21 @@
 <% console.log(success_msg.length); %>
 
 <% if (error_msg.length == 1) { %>
-    <div class="alertError" style="display: block;"">
+    <div class="alertError" style="display: block;">
         <span><%= error_msg %></span>
+        <button class="botonBorrar" onclick="quitar(this)"> <b>&times;</b> </button>
     </div>
 <% } %>
-
+<% if (error.length == 1) { %>
+    <div class="alertError" style="display: block;">
+        <span><%= error %></span>
+        <button class="botonBorrar" onclick="quitar(this)"> <b>&times;</b> </button>
+    </div>
+<% } %>
 <% if (success_msg.length == 1) { %>
     <div class="alertSuccess" style="display: block;">
         <span><%= success_msg %></span>
+        <button class="botonBorrar" onclick="quitar(this)"> <b>&times;</b> </button>
     </div>
 <% } else { %>
     <div style="display: hidden;">
