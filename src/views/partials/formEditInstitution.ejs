@@ -1,0 +1,10 @@
+<div class="formInstitution">
+    <% const institution = variables[0] %>
+    <% console.log(); %>
+    <form action="/updateInstitution/<%-institution._id.toString()%>" method="post">
+        <h1>Editar institución</h1>
+        <label for="">Nombre</label>
+        <input name="name" type="text" value="<%- institution.name %>">
+        <button type="submit">Guardar</button>
+    </form>
+</div>
