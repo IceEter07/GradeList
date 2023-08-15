@@ -1,6 +1,9 @@
 const {Schema, model} = require('mongoose');
 
 const studentSchema = new Schema({
+    user: {
+        type: String,
+    },
     name: {
         type: String,
         required: true,
@@ -12,17 +15,12 @@ const studentSchema = new Schema({
     ap2: {
         type: String,
     },
-    calification: {
-        type: Number,
-        required: true
-    },
-    average: {
-        type: Number,
-        required: true
-    },
     groups:[{
         type: Schema.ObjectId,
-        ref: "group"
+        ref: "group",
+        calification:{
+            type: String,
+        }
     }],
 }, {
     timestamps: true

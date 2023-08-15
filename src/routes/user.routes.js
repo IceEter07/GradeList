@@ -19,6 +19,10 @@ router.post('/login', usersController.signin);
 router.get('/registerForm', usersController.register);
 // router.post('/registerForm', usersController.renderSignForm);
 router.post('/logout',usersController.isLogged, usersController.logout);
+router.post('/logout',usersController.isLogged, usersController.logout);
+
+
+
 // router.get('/user/logout', userController.logout)
 
 router.get('/', userController.aboutUs)

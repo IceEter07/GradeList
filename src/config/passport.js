@@ -8,13 +8,13 @@ passport.use(new LocalStrategy({
 }, async (email, password, done) => {
     const user = await User.findOne({email})
     if (!user){
-        return done(null, false, {message: 'Not user found'});
+        return done(null, false, {message: 'Correo y/o contraseña incorrecta'});
     } else{
         const match = await user.matchPassword(password)
         if (match){
             return done(null, user);
         } else{
-            return done(null, false, {message: 'Incorrect password'});
+            return done(null, false, {message: 'Correo y/o contraseña incorrecta'});
         }
     }
 }));
